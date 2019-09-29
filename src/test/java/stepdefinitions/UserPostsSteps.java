@@ -28,13 +28,20 @@ public class UserPostsSteps extends ApiHelper {
     @Then("^the user should be able to view existing posts$")
     public void the_user_should_be_able_to_view_existing_posts() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userPosts.length).as("There should be at least 1 user post on the site").isGreaterThanOrEqualTo(1);
+        softly.assertThat(userPosts.length)
+                .as("There should be at least 1 user post on the site").isGreaterThanOrEqualTo(1);
+
         for (UserPostModel userPost : userPosts) {
-            softly.assertThat(userPost.getId()).as("id should be a number and greater than 0").isNotNull().isNotNegative();
-            softly.assertThat(userPost.getUserId()).as("userId should be a number and greater than 0").isNotNull().isNotNegative();
-            softly.assertThat(userPost.getTitle()).as("Post title should not be empty").isNotNull().isNotEmpty();
-            softly.assertThat(userPost.getBody()).as("Post body should not be empty").isNotNull().isNotEmpty();
+            softly.assertThat(userPost.getId())
+                    .as("id should be a number and greater than 0").isNotNull().isNotNegative();
+            softly.assertThat(userPost.getUserId())
+                    .as("userId should be a number and greater than 0").isNotNull().isNotNegative();
+            softly.assertThat(userPost.getTitle())
+                    .as("Post title should not be empty").isNotNull().isNotEmpty();
+            softly.assertThat(userPost.getBody())
+                    .as("Post body should not be empty").isNotNull().isNotEmpty();
         }
+
         softly.assertAll();
     }
 
@@ -44,13 +51,19 @@ public class UserPostsSteps extends ApiHelper {
         UserPostCommentModel[] userPostComments = gson().fromJson((r.asString()), UserPostCommentModel[].class);
 
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userPostComments.length).as("There should be at least 1 user comment on the site").isGreaterThanOrEqualTo(1);
+        softly.assertThat(userPostComments.length)
+                .as("There should be at least 1 user comment on the site").isGreaterThanOrEqualTo(1);
         for (UserPostCommentModel userPostComment : userPostComments) {
-            softly.assertThat(userPostComment.getId()).as("Comment id should be a number and greater than 0").isNotNull().isNotNegative();
-            softly.assertThat(userPostComment.getPostId()).as("Comment postId should be a number and greater than 0").isNotNull().isNotNegative();
-            softly.assertThat(userPostComment.getName()).as("Comment name should not be empty").isNotNull().isNotEmpty();
-            softly.assertThat(userPostComment.getEmail()).as("Comment email should not be empty").isNotNull().isNotEmpty();
-            softly.assertThat(userPostComment.getBody()).as("Comment body should not be empty").isNotNull().isNotEmpty();
+            softly.assertThat(userPostComment.getId())
+                    .as("Comment id should be a number and greater than 0").isNotNull().isNotNegative();
+            softly.assertThat(userPostComment.getPostId())
+                    .as("Comment postId should be a number and greater than 0").isNotNull().isNotNegative();
+            softly.assertThat(userPostComment.getName())
+                    .as("Comment name should not be empty").isNotNull().isNotEmpty();
+            softly.assertThat(userPostComment.getEmail())
+                    .as("Comment email should not be empty").isNotNull().isNotEmpty();
+            softly.assertThat(userPostComment.getBody())
+                    .as("Comment body should not be empty").isNotNull().isNotEmpty();
         }
         softly.assertAll();
     }
@@ -61,23 +74,39 @@ public class UserPostsSteps extends ApiHelper {
         UserProfileModel[] userProfiles = gson().fromJson((r.asString()), UserProfileModel[].class);
 
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userProfiles.length).as("There should be at least 1 user comment on the site").isGreaterThanOrEqualTo(1);
+        softly.assertThat(userProfiles.length)
+                .as("There should be at least 1 user comment on the site").isGreaterThanOrEqualTo(1);
         for (UserProfileModel userProfile : userProfiles) {
-            softly.assertThat(userProfile.getId()).as("User id should be a number and greater than 0").isNotNull().isNotNegative();
-            softly.assertThat(userProfile.getEmail()).as("User email should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getName()).as("User name should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getPhone()).as("User phone should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getUsername()).as("User username should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getWebsite()).as("User website should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getCity()).as("User address city should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getStreet()).as("User address street should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getZipcode()).as("User address zipcode should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getSuite()).as("User address suite should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getGeo().getLat()).as("User address geo latitude should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getAddress().getGeo().getLng()).as("User address geo longitude should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getCompany().getName()).as("User company name should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getCompany().getCatchPhrase()).as("User company catch phrase should be a non empty string").isNotNull().isNotEmpty();
-            softly.assertThat(userProfile.getCompany().getBs()).as("User company bs should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getId())
+                    .as("User id should be a number and greater than 0").isNotNull().isNotNegative();
+            softly.assertThat(userProfile.getEmail())
+                    .as("User email should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getName())
+                    .as("User name should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getPhone())
+                    .as("User phone should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getUsername())
+                    .as("User username should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getWebsite())
+                    .as("User website should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getCity())
+                    .as("User address city should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getStreet())
+                    .as("User address street should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getZipcode())
+                    .as("User address zipcode should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getSuite())
+                    .as("User address suite should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getGeo().getLat())
+                    .as("User address geo latitude should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getAddress().getGeo().getLng())
+                    .as("User address geo longitude should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getCompany().getName())
+                    .as("User company name should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getCompany().getCatchPhrase())
+                    .as("User company catch phrase should be a non empty string").isNotNull().isNotEmpty();
+            softly.assertThat(userProfile.getCompany().getBs())
+                    .as("User company bs should be a non empty string").isNotNull().isNotEmpty();
         }
         softly.assertAll();
     }
@@ -98,10 +127,14 @@ public class UserPostsSteps extends ApiHelper {
     @Then("^the post will be saved with correct (\\d+), \"([^\"]*)\" and \"([^\"]*)\"$")
     public void the_post_will_be_saved_with_correct_data(int expectedUserId, String expectedPostTitle, String expectedPostBody) {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userPostResponse.getId()).as("Post id should be returned and be positive").isNotNull().isPositive();
-        softly.assertThat(userPostResponse.getUserId()).as("Post user should be returned and match the user id that posted it").isNotNull().isPositive().isEqualTo(expectedUserId);
-        softly.assertThat(userPostResponse.getTitle()).as("Post title should be returned and match what the user sent").isNotNull().isEqualTo(expectedPostTitle);
-        softly.assertThat(userPostResponse.getBody()).as("Post body should be returned and match what the user sent").isNotNull().isEqualTo(expectedPostBody);
+        softly.assertThat(userPostResponse.getId())
+                .as("Post id should be returned and be positive").isNotNull().isPositive();
+        softly.assertThat(userPostResponse.getUserId())
+                .as("Post user should be returned and match the user id that posted it").isNotNull().isPositive().isEqualTo(expectedUserId);
+        softly.assertThat(userPostResponse.getTitle())
+                .as("Post title should be returned and match what the user sent").isNotNull().isEqualTo(expectedPostTitle);
+        softly.assertThat(userPostResponse.getBody())
+                .as("Post body should be returned and match what the user sent").isNotNull().isEqualTo(expectedPostBody);
         softly.assertAll();
     }
 
@@ -122,11 +155,16 @@ public class UserPostsSteps extends ApiHelper {
     @Then("^the post will be saved with correct \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" against correct (\\d+)$")
     public void the_post_will_be_saved_with_correct_user_email_com_and_against_correct(String expectedName, String expectedEmail, String expectedBody, int expectedPostId) {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userPostCommentResponse.getId()).as("Post comment id should be returned and be positive").isNotNull().isPositive();
-        softly.assertThat(userPostCommentResponse.getPostId()).as("Post comment should be returned and match the correct post id").isNotNull().isPositive().isEqualTo(expectedPostId);
-        softly.assertThat(userPostCommentResponse.getName()).as("Post comment name should be returned and match what the user sent").isNotNull().isEqualTo(expectedName);
-        softly.assertThat(userPostCommentResponse.getEmail()).as("Post comment email should be returned and match what the user sent").isNotNull().isEqualTo(expectedEmail);
-        softly.assertThat(userPostCommentResponse.getBody()).as("Post comment body should be returned and match what the user sent").isNotNull().isEqualTo(expectedBody);
+        softly.assertThat(userPostCommentResponse.getId())
+                .as("Post comment id should be returned and be positive").isNotNull().isPositive();
+        softly.assertThat(userPostCommentResponse.getPostId())
+                .as("Post comment should be returned and match the correct post id").isNotNull().isPositive().isEqualTo(expectedPostId);
+        softly.assertThat(userPostCommentResponse.getName())
+                .as("Post comment name should be returned and match what the user sent").isNotNull().isEqualTo(expectedName);
+        softly.assertThat(userPostCommentResponse.getEmail())
+                .as("Post comment email should be returned and match what the user sent").isNotNull().isEqualTo(expectedEmail);
+        softly.assertThat(userPostCommentResponse.getBody())
+                .as("Post comment body should be returned and match what the user sent").isNotNull().isEqualTo(expectedBody);
         softly.assertAll();
     }
 
@@ -141,6 +179,7 @@ public class UserPostsSteps extends ApiHelper {
 
     /**
      * Generates a UserProfileModel from a map
+     *
      * @param m data map passed from the step
      * @return UserProfileModel
      */
